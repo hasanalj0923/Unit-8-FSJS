@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Server Error
+  if error && error.message
+    p= error.message
+  else
+    p An unexpected error occurred. Please try again later.

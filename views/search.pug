@@ -1,0 +1,9 @@
+form#searchForm(action="/books/search", method="get", role="search")
+  p
+    label(for="search", class="visually-hidden") Search books
+    input#search(name="q", type="text", placeholder="Search", value=query, aria-label="Search books")
+  p
+    button(type="submit") Search
+  if path.path === '/search'
+    p
+      a.button(href="/books") Clear Search

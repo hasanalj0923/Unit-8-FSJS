@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Books
+  p
+    a.button(href='/books/new') Create New Book
+
+  include search
+
+  if books.length
+    table
+      thead
+        tr
+          th(scope="col") Title
+          th(scope="col") Author
+          th(scope="col") Genre
+          th(scope="col") Year
+      tbody
+        each book in books
+          tr
+            td
+              a(href=`/books/${book.id}`)= book.title
+            td= book.author
+            td= book.genre || '—'
+            td= book.year || '—'
+    include pagination
+  else
+    p No results to display.

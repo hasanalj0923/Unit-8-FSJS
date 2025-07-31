@@ -1,0 +1,22 @@
+- var currentPage = 1;
+
+div.paginationContainer
+  while currentPage <= pageCount
+    - var isActive = (currPage == currentPage);
+    - var buttonClass = isActive ? 'paginationButton active' : 'paginationButton';
+    - var basePath = path.baseUrl + (path.path || '');
+    - var href;
+
+    if (currentPage === 1)
+      if (query)
+        - href = `${basePath}?q=${encodeURIComponent(query)}`;
+      else
+        - href = basePath;
+    else
+      if (query)
+        - href = `${basePath}?q=${encodeURIComponent(query)}&page=${currentPage}`;
+      else
+        - href = `${basePath}?page=${currentPage}`;
+
+    a.paginationButton(class=buttonClass, href=href, aria-current=isActive ? 'page' : false)= currentPage
+    - currentPage++;

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Page Not Found
+  if error && error.message
+    p(role="alert")= error.message
+  else
+    p(role="alert") The page you are looking for does not exist.
+  p
+    a.button(href="/books" aria-label="Go back to Home page") Home
